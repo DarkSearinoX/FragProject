@@ -1,0 +1,4 @@
+frag_prot:
+    resource: "@FragProjectFragBundle/Controller/"
+    type:     annotation
+    prefix:   /

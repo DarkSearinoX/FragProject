@@ -1,0 +1,13 @@
+/* 
+    Document   : main
+    Created on : Mar 4, 2013, 9:03:22 PM
+    Author     : Felipe Rodriguez
+    Description:
+        Main Fragprot stylesheet.
+*/
+
+.image-scale-hack {
+    image-rendering:optimizeQuality; 
+    -ms-interpolation-mode:bicubic;
+    transform: rotate( .0001deg );
+} 

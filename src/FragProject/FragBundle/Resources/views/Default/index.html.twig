@@ -1,0 +1,13 @@
+{# Author: Felipe Rodríguez Valenzuela #}
+{% extends 'FragProjectFragBundle::base.html.twig' %}
+{% block page_title %}
+{% endblock %}
+{% block menu_home%}
+current_page_item
+{% endblock %}
+{% block sidepanel %}
+<img class="image-scale-hack" src="{{ asset("bundles/fragprojectfrag/images/clust.png") }}" alt="" {#width="270px"#}/>
+{% endblock %}
+{% block main %}
+<p>Protein fragments play an essential role in many bioinformatics areas, like homology protein modeling, secondary and tertiary structure prediction and the study of sequence - structure relationships. In this study, we developed a repository containing thousands of protein fragments clustered by structural similarity. The database also includes information like accessible surface area per residue and two hydrophobicity coefficients associated to each aminoacid. Also, the groups of fragments can be analyzed using a weblogo to obtain different information related to the sequence diversity within the groups. The method used to cluster the fragments is called de novo clustering, which possess a high scalability rate, allowing to include a vast quantity of fragments with a low computational demand. The major aim of this database is to help scientists to identify different fragments with the same sequence and, on the other hand, different sequences related to a specific fragment conformation. Potential applications of this database are selection of specific fragments to be used as blockers in drug design or modification of specific residues on a fragment to obtain a better stability in an aqueous medium.</p>
+{% endblock %}
