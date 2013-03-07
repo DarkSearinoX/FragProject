@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/fragprot",name="fragprot_home")
+     * @Route("/",name="fragprot_home")
      * @Template()
      */
     public function indexAction()

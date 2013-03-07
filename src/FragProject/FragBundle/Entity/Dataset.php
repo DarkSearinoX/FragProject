@@ -26,7 +26,7 @@ class Dataset
      *
      * @ORM\Column(name="FullName", type="string", length=255)
      */
-    private $FullName;
+    private $fullName;
 
     /**
      * @ORM\OneToMany(targetEntity="Fragment", mappedBy="dataset",cascade={"persist"})
@@ -44,6 +44,7 @@ class Dataset
         $this->residues = new \Doctrine\Common\Collections\ArrayCollection();
     }    
     
+
     /**
      * Get id
      *
@@ -55,26 +56,26 @@ class Dataset
     }
 
     /**
-     * Set FullName
+     * Set fullName
      *
      * @param string $fullName
      * @return Dataset
      */
     public function setFullName($fullName)
     {
-        $this->FullName = $fullName;
+        $this->fullName = $fullName;
     
         return $this;
     }
 
     /**
-     * Get FullName
+     * Get fullName
      *
      * @return string 
      */
     public function getFullName()
     {
-        return $this->FullName;
+        return $this->fullName;
     }
 
     /**

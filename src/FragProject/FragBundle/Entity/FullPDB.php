@@ -26,22 +26,37 @@ class FullPDB
      *
      * @ORM\Column(name="FourLetterName", type="string", length=255)
      */
-    private $FourLetterName;
+    private $fourLetterName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Resolution", type="string", length=255)
      */
-    private $Resolution;
+    private $resolution;
 
     /**
      * @var string
      *
      * @ORM\Column(name="FullName", type="text")
      */
-    private $FullName;
+    private $fullName;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Fragment", mappedBy="pdb",cascade={"persist"})
+     **/
+    private $fragments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Residue", mappedBy="pdb",cascade={"persist"})
+     **/
+    private $residues;
+    
+    
+    public function __construct() {
+        $this->fragments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->residues = new \Doctrine\Common\Collections\ArrayCollection();
+    }    
 
     /**
      * Get id
@@ -120,5 +135,71 @@ class FullPDB
     public function getFullName()
     {
         return $this->FullName;
+    }
+
+    /**
+     * Add fragments
+     *
+     * @param \FragProject\FragBundle\Entity\Fragment $fragments
+     * @return FullPDB
+     */
+    public function addFragment(\FragProject\FragBundle\Entity\Fragment $fragments)
+    {
+        $this->fragments[] = $fragments;
+    
+        return $this;
+    }
+
+    /**
+     * Remove fragments
+     *
+     * @param \FragProject\FragBundle\Entity\Fragment $fragments
+     */
+    public function removeFragment(\FragProject\FragBundle\Entity\Fragment $fragments)
+    {
+        $this->fragments->removeElement($fragments);
+    }
+
+    /**
+     * Get fragments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFragments()
+    {
+        return $this->fragments;
+    }
+
+    /**
+     * Add residues
+     *
+     * @param \FragProject\FragBundle\Entity\Residue $residues
+     * @return FullPDB
+     */
+    public function addResidue(\FragProject\FragBundle\Entity\Residue $residues)
+    {
+        $this->residues[] = $residues;
+    
+        return $this;
+    }
+
+    /**
+     * Remove residues
+     *
+     * @param \FragProject\FragBundle\Entity\Residue $residues
+     */
+    public function removeResidue(\FragProject\FragBundle\Entity\Residue $residues)
+    {
+        $this->residues->removeElement($residues);
+    }
+
+    /**
+     * Get residues
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResidues()
+    {
+        return $this->residues;
     }
 }

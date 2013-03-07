@@ -26,42 +26,42 @@ class Residue
      *
      * @ORM\Column(name="Chain", type="string", length=255)
      */
-    private $Chain;
+    private $chain;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="Position", type="integer")
      */
-    private $Position;
+    private $position;
 
     /**
      * @var float
      *
      * @ORM\Column(name="TotalAsa", type="float")
      */
-    private $TotalAsa;
+    private $totalAsa;
 
     /**
      * @var float
      *
      * @ORM\Column(name="TotalAsaRel", type="float")
      */
-    private $TotalAsaRel;
+    private $totalAsaRel;
 
     /**
      * @var float
      *
      * @ORM\Column(name="SidechainAsa", type="float")
      */
-    private $SidechainAsa;
+    private $sidechainAsa;
 
     /**
      * @var float
      *
      * @ORM\Column(name="SidechainAsaRel", type="float")
      */
-    private $SidechainAsaRel;
+    private $sidechainAsaRel;
 
     /**
      * @ORM\ManyToOne(targetEntity="Aminoacid", inversedBy="residues")
@@ -74,7 +74,15 @@ class Residue
      * @ORM\JoinColumn(name="datasetId", referencedColumnName="id")
      */
     private $dataset;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FullPDB", inversedBy="residues")
+     * @ORM\JoinColumn(name="pdbId", referencedColumnName="id")
+     */
+    private $pdb;
     
+
+
     /**
      * Get id
      *
@@ -86,141 +94,141 @@ class Residue
     }
 
     /**
-     * Set Chain
+     * Set chain
      *
      * @param string $chain
      * @return Residue
      */
     public function setChain($chain)
     {
-        $this->Chain = $chain;
+        $this->chain = $chain;
     
         return $this;
     }
 
     /**
-     * Get Chain
+     * Get chain
      *
      * @return string 
      */
     public function getChain()
     {
-        return $this->Chain;
+        return $this->chain;
     }
 
     /**
-     * Set Position
+     * Set position
      *
      * @param integer $position
      * @return Residue
      */
     public function setPosition($position)
     {
-        $this->Position = $position;
+        $this->position = $position;
     
         return $this;
     }
 
     /**
-     * Get Position
+     * Get position
      *
      * @return integer 
      */
     public function getPosition()
     {
-        return $this->Position;
+        return $this->position;
     }
 
     /**
-     * Set TotalAsa
+     * Set totalAsa
      *
      * @param float $totalAsa
      * @return Residue
      */
     public function setTotalAsa($totalAsa)
     {
-        $this->TotalAsa = $totalAsa;
+        $this->totalAsa = $totalAsa;
     
         return $this;
     }
 
     /**
-     * Get TotalAsa
+     * Get totalAsa
      *
      * @return float 
      */
     public function getTotalAsa()
     {
-        return $this->TotalAsa;
+        return $this->totalAsa;
     }
 
     /**
-     * Set TotalAsaRel
+     * Set totalAsaRel
      *
      * @param float $totalAsaRel
      * @return Residue
      */
     public function setTotalAsaRel($totalAsaRel)
     {
-        $this->TotalAsaRel = $totalAsaRel;
+        $this->totalAsaRel = $totalAsaRel;
     
         return $this;
     }
 
     /**
-     * Get TotalAsaRel
+     * Get totalAsaRel
      *
      * @return float 
      */
     public function getTotalAsaRel()
     {
-        return $this->TotalAsaRel;
+        return $this->totalAsaRel;
     }
 
     /**
-     * Set SidechainAsa
+     * Set sidechainAsa
      *
      * @param float $sidechainAsa
      * @return Residue
      */
     public function setSidechainAsa($sidechainAsa)
     {
-        $this->SidechainAsa = $sidechainAsa;
+        $this->sidechainAsa = $sidechainAsa;
     
         return $this;
     }
 
     /**
-     * Get SidechainAsa
+     * Get sidechainAsa
      *
      * @return float 
      */
     public function getSidechainAsa()
     {
-        return $this->SidechainAsa;
+        return $this->sidechainAsa;
     }
 
     /**
-     * Set SidechainAsaRel
+     * Set sidechainAsaRel
      *
      * @param float $sidechainAsaRel
      * @return Residue
      */
     public function setSidechainAsaRel($sidechainAsaRel)
     {
-        $this->SidechainAsaRel = $sidechainAsaRel;
+        $this->sidechainAsaRel = $sidechainAsaRel;
     
         return $this;
     }
 
     /**
-     * Get SidechainAsaRel
+     * Get sidechainAsaRel
      *
      * @return float 
      */
     public function getSidechainAsaRel()
     {
-        return $this->SidechainAsaRel;
+        return $this->sidechainAsaRel;
     }
 
     /**
@@ -267,5 +275,28 @@ class Residue
     public function getDataset()
     {
         return $this->dataset;
+    }
+
+    /**
+     * Set pdb
+     *
+     * @param \FragProject\FragBundle\Entity\FullPDB $pdb
+     * @return Residue
+     */
+    public function setPdb(\FragProject\FragBundle\Entity\FullPDB $pdb = null)
+    {
+        $this->pdb = $pdb;
+    
+        return $this;
+    }
+
+    /**
+     * Get pdb
+     *
+     * @return \FragProject\FragBundle\Entity\FullPDB 
+     */
+    public function getPdb()
+    {
+        return $this->pdb;
     }
 }
