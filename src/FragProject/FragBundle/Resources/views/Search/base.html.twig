@@ -1,6 +1,16 @@
 {# Author: Felipe Rodríguez Valenzuela #}
 {% extends 'FragProjectFragBundle::base.html.twig' %}
-
+{% block menu_search%}
+current_page_item
+{% endblock %}
+{%block sidemenu%}
+<h3>Search by</h3>
+<ul>
+    <li><a href="{{path('fragprot_seq_search_home')}}">Sequence</a></li>
+    <li><a href="#">Fragment data</a></li>
+    <li><a href="#">Fragment (pdb file)</a></li>
+</ul>
+{%endblock%}
 {% block javascripts %}
 {{ parent() }}
 {% endblock %}

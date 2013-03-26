@@ -344,7 +344,7 @@ img {
 
 #sidebar li li a {
 	padding: 0px 0px 0px 20px;
-	background: url(images/img04.jpg) no-repeat left 50%;
+	background: url(../images/images/img04.jpg) no-repeat left 50%;
 }
 
 #sidebar h2 {
@@ -484,7 +484,7 @@ img {
 	margin: 0px auto;
 	width: 1000px;
 	height: 440px;
-	background: url(images/img03.png) no-repeat left bottom;
+	background: url(../images/img03.png) no-repeat left bottom;
 }
 
 #banner .content {
