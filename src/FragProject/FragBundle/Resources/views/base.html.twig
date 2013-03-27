@@ -40,7 +40,7 @@
                     <ul>
                     {% block menu %}
                         <li class="{%block menu_home%}{%endblock%}"><a href="{{ path('fragprot_home') }}"><span>Home</span></a></li>
-                        <li class="{%block menu_search%}{%endblock%}"><a href="{{ path('fragprot_home') }}"><span>Search</span></a></li>
+                        <li class="{%block menu_search%}{%endblock%}"><a href="{{ path('fragprot_search_home') }}"><span>Search</span></a></li>
                         <li class="{%block menu_contact%}{%endblock%}"><a href="{{ path('fragprot_home') }}"><span>Contact</span></a></li>
                     {% endblock %}  
                     </ul>
@@ -58,18 +58,15 @@
         <div id="page-wrapper">
             <div id="page">
                 <div id="sidebar">
-                    {% block sidepanel %}
-                    {% endblock %}
-                    <!--<ul>
-                        <h2>Sidebar Menu</h2>
-                        {% block sidemenu %}
-                        {#<li><a href="{{ path('eva_home') }}">Home</a></li>#}
-                        {% endblock %}
-                    </ul>-->
+                    <ul>
+                        <li>
+                        {% block sidemenu %}{% endblock %}
+                        </li>
+                    </ul>
                 </div>
                 <div id="content">
                     <div class="post">
-                        <h2 class="title">{% block page_title %}{%endblock%}</h2>
+                        <h2 class="title" style="margin-top: 20px">{% block page_title %}{%endblock%}</h2>
                         <div class="entry">
                             {% block flash_messages %}
                                 {% for flashMessage in app.session.flashbag.get('notice') %}
