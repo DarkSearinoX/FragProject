@@ -4,6 +4,7 @@ namespace MeloLab\FragProt\WebBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use MeloLab\FragProt\WebBundle\Entity\Fragment;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -33,12 +34,28 @@ class LoadFragmentData implements FixtureInterface, ContainerAwareInterface
         $em = $this->container->get('doctrine')->getManager();
         
         // Reset ID column
-        $tableName = $em->getClassMetadata('MeloLabEvaBundle:Fragment')->getTableName();
+        $tableName = $em->getClassMetadata('MeloLabFragProtWebBundle:Fragment')->getTableName();
         $em->getConnection()->exec("ALTER TABLE $tableName AUTO_INCREMENT = 1;");
 
-        /* 01 */ $e = new Aminoacid(); $e->setFullName('Full Scholarship'); $manager->persist($e);
-
-
+        //Read file contents
+        $handle = fopen("/var/www/FragProject/src/MeloLab/FragProt/WebBundle/DBData/SIZE_7_DATA.txt", "r") or die("Couldn't get handle");
+        if ($handle) {
+            while (!feof($handle)) {
+                $bufferArray = array();
+                $buffer = fgets($handle, 4096);
+                $bufferArray = explode('@', $buffer);
+                echo $bufferArray[2];
+                
+                /* 01 */ 
+                $e = new Fragment();
+                $e->setSequence($bufferArray[2]);
+                $manager->persist($e);
+                
+                break;
+            }
+            fclose($handle);
+        }
+        
         $manager->flush();
     }
 }

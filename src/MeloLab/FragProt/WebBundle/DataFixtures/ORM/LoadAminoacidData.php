@@ -4,6 +4,7 @@ namespace MeloLab\FragProt\WebBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use MeloLab\FragProt\WebBundle\Entity\Aminoacid;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -33,7 +34,7 @@ class LoadAminoacidData implements FixtureInterface, ContainerAwareInterface
         $em = $this->container->get('doctrine')->getManager();
         
         // Reset ID column
-        $tableName = $em->getClassMetadata('MeloLabEvaBundle:Fragment')->getTableName();
+        $tableName = $em->getClassMetadata('MeloLabFragProtWebBundle:Aminoacid')->getTableName();
         $em->getConnection()->exec("ALTER TABLE $tableName AUTO_INCREMENT = 1;");
 
         /* 01 */ 

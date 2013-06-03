@@ -5,3 +5,4 @@
 /web/bundles/
 .*
 !/.gitignore
+src/MeloLab/FragProt/WebBundle/DBData/*

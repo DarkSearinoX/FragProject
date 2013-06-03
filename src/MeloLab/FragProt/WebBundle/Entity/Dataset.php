@@ -27,6 +27,14 @@ class Dataset
      * @ORM\Column(name="FullName", type="string", length=255)
      */
     private $fullName;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=255)
+     */
+    private $Description;
+    
 
     /**
      * @ORM\OneToMany(targetEntity="Fragment", mappedBy="dataset",cascade={"persist"})
