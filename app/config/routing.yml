@@ -1,4 +1,4 @@
 frag_prot:
-    resource: "@FragProjectFragBundle/Controller/"
+    resource: "@MeloLabFragProtWebBundle/Controller/"
     type:     annotation
     prefix:   /

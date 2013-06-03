@@ -89,7 +89,10 @@ class InlineFragmentRenderer extends RoutableFragmentRenderer
         // the sub-request is internal
         $server['REMOTE_ADDR'] = '127.0.0.1';
 
-        $subRequest = Request::create($uri, 'get', array(), $cookies, array(), $server);
+        $subRequest = $request::create($uri, 'get', array(), $cookies, array(), $server);
+        if ($request->headers->has('Surrogate-Capability')) {
+            $subRequest->headers->set('Surrogate-Capability', $request->headers->get('Surrogate-Capability'));
+        }
         if ($session = $request->getSession()) {
             $subRequest->setSession($session);
         }
