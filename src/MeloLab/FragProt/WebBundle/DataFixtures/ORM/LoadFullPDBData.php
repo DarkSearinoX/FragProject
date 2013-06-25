@@ -4,7 +4,7 @@ namespace MeloLab\FragProt\WebBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use MeloLab\FragProt\WebBundle\Entity\Fragment;
+use MeloLab\FragProt\WebBundle\Entity\FullPDB;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Load aminoacid data into the database.
  * @author Felipe Rodriguez <ferodriguez.mbl@gmail.com>
  */
-class LoadFragmentData implements FixtureInterface, ContainerAwareInterface
+class LoadFullPDBData implements FixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -34,27 +34,37 @@ class LoadFragmentData implements FixtureInterface, ContainerAwareInterface
         $em = $this->container->get('doctrine')->getManager();
         
         // Reset ID column
-        $tableName = $em->getClassMetadata('MeloLabFragProtWebBundle:Fragment')->getTableName();
+        $tableName = $em->getClassMetadata('MeloLabFragProtWebBundle:FullPDB')->getTableName();
         $em->getConnection()->exec("ALTER TABLE $tableName AUTO_INCREMENT = 1;");
 
         //Read file contents
-//        $handle = fopen("/var/www/FragProject/src/MeloLab/FragProt/WebBundle/DBData/SIZE_7_DATA.txt", "r") or die("Couldn't get handle");
-//        if ($handle) {
-//            while (!feof($handle)) {
-//                $bufferArray = array();
-//                $buffer = fgets($handle, 4096);
-//                $bufferArray = explode('@', $buffer);
+        $handle = fopen("/var/www/FragProject/src/MeloLab/FragProt/WebBundle/DBData/AllPdbStructures.csv", "r") or die("Couldn't get handle");
+        if ($handle) {
+            while (!feof($handle)) {
+                $bufferArray = array();
+                $buffer = fgets($handle, 4096);
+                $bufferArray = explode(',', $buffer);
+                
+                
+//                echo $bufferArray[0];
+//                echo '\n';
+//                echo $bufferArray[1];
+//                echo '\n';
 //                echo $bufferArray[2];
+                
+                
+                
+                /* 01 */ 
+                $e = new FullPDB();
+                $e->setFourLetterName($bufferArray[0]);
+                $e->setResolution($bufferArray[2]);
+                $e->setFullName($bufferArray[1]);        
+                $manager->persist($e);
 //                
-//                /* 01 */ 
-//                $e = new Fragment();
-//                $e->setSequence($bufferArray[2]);
-//                $manager->persist($e);
-//                
-//                break;
-//            }
-//            fclose($handle);
-//        }
+                break;
+            }
+            fclose($handle);
+        }
         
         $manager->flush();
     }
