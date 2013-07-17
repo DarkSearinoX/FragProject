@@ -95,7 +95,13 @@ class Fragment
      */
     private $fragmentType;
 
+    /**
+     * @ORM\OneToOne(targetEntity="FragmentFile")
+     * @ORM\JoinColumn(name="fragmentFileId", referencedColumnName="id")
+     */
+    private $fragmentFile;
 
+    
     /**
      * Get id
      *
@@ -357,5 +363,28 @@ class Fragment
     public function getFragmentType()
     {
         return $this->fragmentType;
+    }
+    
+    /**
+     * Set fragment file
+     *
+     * @param \MeloLab\FragProt\WebBundle\Entity\FragmentFile $fragmentFile
+     * @return Fragment
+     */
+    public function setFragmentFile(\MeloLab\FragProt\WebBundle\Entity\FragmentFile $fragmentFile = null)
+    {
+        $this->fragmentFile = $fragmentFile;
+    
+        return $this;
+    }
+
+    /**
+     * Get fragment file
+     *
+     * @return \MeloLab\FragProt\WebBundle\Entity\FragmentFile
+     */
+    public function getFragmentFile()
+    {
+        return $this->fragmentFile;
     }
 }

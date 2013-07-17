@@ -63,3 +63,18 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+#Vich Uploader for profile picture
+vich_uploader:
+    db_driver: orm
+    twig: true
+    gaufrette: false
+    storage: vich_uploader.storage.file_system
+    mappings:
+        fragments:
+            uri_prefix: %kernel.root_dir%/../src/MeloLab/FragProt/WebBundle/Resources/public/uploads/fragments
+            upload_destination: %kernel.root_dir%/../src/MeloLab/FragProt/WebBundle/Resources/public/uploads/fragments
+            delete_on_remove: true
+            delete_on_update: true
+            inject_on_load: true
+            namer: vich_uploader.namer_uniqid

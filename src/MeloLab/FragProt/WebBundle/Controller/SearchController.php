@@ -42,6 +42,16 @@ class SearchController extends Controller
     }
     
     /**
+     * @Route("/upload",name="fragprot_search_upload")
+     * @Template()
+     */
+    public function searchUploadAction(Request $request)
+    {
+       return array('form'=>null); 
+    }
+    
+    
+    /**
      * @Route("/results",name="fragprot_search_results")
      * @Template()
      */
@@ -58,13 +68,6 @@ class SearchController extends Controller
     }
     
     
-    /**
-     * @Route("/upload",name="fragprot_search_upload")
-     * @Template()
-     */
-    public function searchUploadAction(Request $request)
-    {
-       return array('form'=>null); 
-    }
+
     
 }
