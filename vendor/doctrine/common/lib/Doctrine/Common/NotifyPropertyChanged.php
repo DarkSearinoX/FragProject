@@ -40,5 +40,6 @@ interface NotifyPropertyChanged
      *
      * @param PropertyChangedListener $listener
      */
-    public function addPropertyChangedListener(PropertyChangedListener $listener);
+    function addPropertyChangedListener(PropertyChangedListener $listener);
 }
+

@@ -11,3 +11,21 @@
     -ms-interpolation-mode:bicubic;
     transform: rotate( .0001deg );
 } 
+
+div label {
+    margin-top: 7px;
+    display: block; 
+}
+div input {  
+    display: block;
+}  
+#logo h1 {
+    line-height: 70px !important;
+}
+#header {
+	
+    height: 100px !important;
+}
+#page {
+    min-height:400px !important;
+}

@@ -41,7 +41,7 @@ class Loader
      *
      * @var array
      */
-    private $orderedFixtures;
+    private $orderedFixtures = array();
 
     /**
      * Determines if we must order fixtures by number
@@ -138,6 +138,9 @@ class Loader
                 $this->orderFixturesByNumber = true;
             } elseif ($fixture instanceof DependentFixtureInterface) {
                 $this->orderFixturesByDependencies = true;
+                foreach($fixture->getDependencies() as $class) {
+                    $this->addFixture(new $class);
+                }
             }
 
             $this->fixtures[$fixtureClass] = $fixture;
@@ -151,6 +154,8 @@ class Loader
      */
     public function getFixtures()
     {
+        $this->orderedFixtures = array();
+
         if ($this->orderFixturesByNumber) {
             $this->orderFixturesByNumber();
         }
@@ -297,7 +302,7 @@ class Loader
             }
         }
 
-        $this->orderedFixtures = is_array($this->orderedFixtures) ? array_merge($this->orderedFixtures, $orderedFixtures) : $orderedFixtures;
+        $this->orderedFixtures = array_merge($this->orderedFixtures, $orderedFixtures);
     }
 
     private function validateDependencies($dependenciesClasses)

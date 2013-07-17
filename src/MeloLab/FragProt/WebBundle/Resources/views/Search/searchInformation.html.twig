@@ -1,0 +1,14 @@
+{# Author: Felipe Rodríguez Valenzuela #}
+{% extends 'MeloLabFragProtWebBundle:Search:base.html.twig' %}
+{% form_theme form 'MeloLabFragProtWebBundle:Form:niceFields.html.twig' %}
+
+{%block page_title%}Fragment Search{%endblock%}
+
+{% block main %}
+
+<form action="{{ path('fragprot_search_results') }}" method="get">
+        {{form_widget(form)}}
+        <button type="submit">Search</button>
+</form>
+
+{% endblock %}

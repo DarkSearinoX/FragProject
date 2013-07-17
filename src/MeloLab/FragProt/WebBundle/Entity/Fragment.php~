@@ -1,6 +1,6 @@
 <?php
 
-namespace FragProject\FragBundle\Entity;
+namespace MeloLab\FragProt\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,69 +26,76 @@ class Fragment
      *
      * @ORM\Column(name="Sequence", type="string", length=255)
      */
-    private $Sequence;
+    private $sequence;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Array", type="string", length=255)
      */
-    private $Array;
+    private $usrArray;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Chain", type="string", length=255)
      */
-    private $Chain;
+    private $chain;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="Group", type="integer")
      */
-    private $Group;
+    private $group;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="InitPos", type="integer")
      */
-    private $InitPos;
+    private $initPos;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="EndPos", type="integer")
      */
-    private $EndPos;
+    private $endPos;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="Size", type="integer")
      */
-    private $Size;
+    private $size;
 
     /**
      * @var float
      *
      * @ORM\Column(name="RMSD", type="float")
      */
-    private $RMSD;
+    private $rmsd;
 
     /**
      * @ORM\ManyToOne(targetEntity="Dataset", inversedBy="fragments")
      * @ORM\JoinColumn(name="datasetId", referencedColumnName="id")
      */
     private $dataset;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FullPDB", inversedBy="fragments")
+     * @ORM\JoinColumn(name="pdbId", referencedColumnName="id")
+     */
+    private $pdb;
     
     /**
      * @ORM\ManyToOne(targetEntity="FragmentType", inversedBy="fragments")
      * @ORM\JoinColumn(name="fragmentTypeId", referencedColumnName="id")
      */
     private $fragmentType;
-    
+
+
     /**
      * Get id
      *
@@ -100,186 +107,255 @@ class Fragment
     }
 
     /**
-     * Set Sequence
+     * Set sequence
      *
      * @param string $sequence
      * @return Fragment
      */
     public function setSequence($sequence)
     {
-        $this->Sequence = $sequence;
+        $this->sequence = $sequence;
     
         return $this;
     }
 
     /**
-     * Get Sequence
+     * Get sequence
      *
      * @return string 
      */
     public function getSequence()
     {
-        return $this->Sequence;
+        return $this->sequence;
     }
 
     /**
-     * Set Array
+     * Set usrArray
      *
-     * @param string $array
+     * @param string $usrArray
      * @return Fragment
      */
-    public function setArray($array)
+    public function setUsrArray($usrArray)
     {
-        $this->Array = $array;
+        $this->usrArray = $usrArray;
     
         return $this;
     }
 
     /**
-     * Get Array
+     * Get usrArray
      *
      * @return string 
      */
-    public function getArray()
+    public function getUsrArray()
     {
-        return $this->Array;
+        return $this->usrArray;
     }
 
     /**
-     * Set Chain
+     * Set chain
      *
      * @param string $chain
      * @return Fragment
      */
     public function setChain($chain)
     {
-        $this->Chain = $chain;
+        $this->chain = $chain;
     
         return $this;
     }
 
     /**
-     * Get Chain
+     * Get chain
      *
      * @return string 
      */
     public function getChain()
     {
-        return $this->Chain;
+        return $this->chain;
     }
 
     /**
-     * Set Group
+     * Set group
      *
      * @param integer $group
      * @return Fragment
      */
     public function setGroup($group)
     {
-        $this->Group = $group;
+        $this->group = $group;
     
         return $this;
     }
 
     /**
-     * Get Group
+     * Get group
      *
      * @return integer 
      */
     public function getGroup()
     {
-        return $this->Group;
+        return $this->group;
     }
 
     /**
-     * Set InitPos
+     * Set initPos
      *
      * @param integer $initPos
      * @return Fragment
      */
     public function setInitPos($initPos)
     {
-        $this->InitPos = $initPos;
+        $this->initPos = $initPos;
     
         return $this;
     }
 
     /**
-     * Get InitPos
+     * Get initPos
      *
      * @return integer 
      */
     public function getInitPos()
     {
-        return $this->InitPos;
+        return $this->initPos;
     }
 
     /**
-     * Set EndPos
+     * Set endPos
      *
      * @param integer $endPos
      * @return Fragment
      */
     public function setEndPos($endPos)
     {
-        $this->EndPos = $endPos;
+        $this->endPos = $endPos;
     
         return $this;
     }
 
     /**
-     * Get EndPos
+     * Get endPos
      *
      * @return integer 
      */
     public function getEndPos()
     {
-        return $this->EndPos;
+        return $this->endPos;
     }
 
     /**
-     * Set Size
+     * Set size
      *
      * @param integer $size
      * @return Fragment
      */
     public function setSize($size)
     {
-        $this->Size = $size;
+        $this->size = $size;
     
         return $this;
     }
 
     /**
-     * Get Size
+     * Get size
      *
      * @return integer 
      */
     public function getSize()
     {
-        return $this->Size;
+        return $this->size;
     }
 
     /**
-     * Set RMSD
+     * Set rmsd
      *
-     * @param float $rMSD
+     * @param float $rmsd
      * @return Fragment
      */
-    public function setRMSD($rMSD)
+    public function setRmsd($rmsd)
     {
-        $this->RMSD = $rMSD;
+        $this->rmsd = $rmsd;
     
         return $this;
     }
 
     /**
-     * Get RMSD
+     * Get rmsd
      *
      * @return float 
      */
-    public function getRMSD()
+    public function getRmsd()
     {
-        return $this->RMSD;
+        return $this->rmsd;
+    }
+
+    /**
+     * Set dataset
+     *
+     * @param \MeloLab\FragProt\WebBundle\Entity\Dataset $dataset
+     * @return Fragment
+     */
+    public function setDataset(\MeloLab\FragProt\WebBundle\Entity\Dataset $dataset = null)
+    {
+        $this->dataset = $dataset;
+    
+        return $this;
+    }
+
+    /**
+     * Get dataset
+     *
+     * @return \MeloLab\FragProt\WebBundle\Entity\Dataset 
+     */
+    public function getDataset()
+    {
+        return $this->dataset;
+    }
+
+    /**
+     * Set pdb
+     *
+     * @param \MeloLab\FragProt\WebBundle\Entity\FullPDB $pdb
+     * @return Fragment
+     */
+    public function setPdb(\MeloLab\FragProt\WebBundle\Entity\FullPDB $pdb = null)
+    {
+        $this->pdb = $pdb;
+    
+        return $this;
+    }
+
+    /**
+     * Get pdb
+     *
+     * @return \MeloLab\FragProt\WebBundle\Entity\FullPDB 
+     */
+    public function getPdb()
+    {
+        return $this->pdb;
+    }
+
+    /**
+     * Set fragmentType
+     *
+     * @param \MeloLab\FragProt\WebBundle\Entity\FragmentType $fragmentType
+     * @return Fragment
+     */
+    public function setFragmentType(\MeloLab\FragProt\WebBundle\Entity\FragmentType $fragmentType = null)
+    {
+        $this->fragmentType = $fragmentType;
+    
+        return $this;
+    }
+
+    /**
+     * Get fragmentType
+     *
+     * @return \MeloLab\FragProt\WebBundle\Entity\FragmentType 
+     */
+    public function getFragmentType()
+    {
+        return $this->fragmentType;
     }
 }

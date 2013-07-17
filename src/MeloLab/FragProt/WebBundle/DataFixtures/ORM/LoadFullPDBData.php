@@ -42,26 +42,27 @@ class LoadFullPDBData implements FixtureInterface, ContainerAwareInterface
         if ($handle) {
             while (!feof($handle)) {
                 $bufferArray = array();
-                $buffer = fgets($handle, 4096);
-                $bufferArray = explode(',', $buffer);
+                $buffer = fgets($handle, 8196);
+                $buffer2 = str_replace("\"", "",$buffer);
+                $buffer3 = str_replace("\n", "",$buffer2);
+                $bufferArray = explode(',', $buffer3);
                 
+                if ($bufferArray[0] && $bufferArray[1] && $bufferArray[1])
+                {
+                    /* 01 */ 
+                    $e = new FullPDB();
+
+                    $e->setFourLetterName($bufferArray[0]);
+//                    echo $e->getFourLetterName().' ';
+                    $e->setResolution($bufferArray[2]);
+//                    echo $e->getResolution().' ';
+                    $e->setFullName($bufferArray[1]);
+//                    echo $e->getFullName().'\n';
+
+                    $manager->persist($e);
+                    
+                }
                 
-//                echo $bufferArray[0];
-//                echo '\n';
-//                echo $bufferArray[1];
-//                echo '\n';
-//                echo $bufferArray[2];
-                
-                
-                
-                /* 01 */ 
-                $e = new FullPDB();
-                $e->setFourLetterName($bufferArray[0]);
-                $e->setResolution($bufferArray[2]);
-                $e->setFullName($bufferArray[1]);        
-                $manager->persist($e);
-//                
-                break;
             }
             fclose($handle);
         }
@@ -73,6 +74,6 @@ class LoadFullPDBData implements FixtureInterface, ContainerAwareInterface
      * {@inheritDoc}
      */
     public function getOrder() {
-        return 10; // the order in which fixtures will be loaded
+        return 4; // the order in which fixtures will be loaded
     }    
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace FragProject\FragBundle\Entity;
+namespace MeloLab\FragProt\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -189,5 +189,38 @@ class Aminoacid
     public function getHidrophB()
     {
         return $this->hidrophB;
+    }
+
+    /**
+     * Add residues
+     *
+     * @param \MeloLab\FragProt\WebBundle\Entity\Residue $residues
+     * @return Aminoacid
+     */
+    public function addResidue(\MeloLab\FragProt\WebBundle\Entity\Residue $residues)
+    {
+        $this->residues[] = $residues;
+    
+        return $this;
+    }
+
+    /**
+     * Remove residues
+     *
+     * @param \MeloLab\FragProt\WebBundle\Entity\Residue $residues
+     */
+    public function removeResidue(\MeloLab\FragProt\WebBundle\Entity\Residue $residues)
+    {
+        $this->residues->removeElement($residues);
+    }
+
+    /**
+     * Get residues
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResidues()
+    {
+        return $this->residues;
     }
 }

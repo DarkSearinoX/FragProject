@@ -6,9 +6,8 @@ current_page_item
 {%block sidemenu%}
 <h3>Search by</h3>
 <ul>
-    <li><a href="{{path('fragprot_seq_search_home')}}">Sequence</a></li>
-    <li><a href="#">Fragment data</a></li>
-    <li><a href="#">Fragment (pdb file)</a></li>
+    <li><a href="{{path('fragprot_search_information')}}">Fragment Data</a></li>
+    <li><a href="{{path('fragprot_search_upload')}}">Upload Fragment (.pdb format)</a></li>
 </ul>
 {%endblock%}
 {% block javascripts %}

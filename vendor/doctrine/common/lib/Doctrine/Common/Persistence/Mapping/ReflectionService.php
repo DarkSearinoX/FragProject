@@ -33,12 +33,9 @@ interface ReflectionService
      * Return an array of the parent classes (not interfaces) for the given class.
      *
      * @param string $class
-     *
-     * @throws \Doctrine\Common\Persistence\Mapping\MappingException
-     *
      * @return array
      */
-    public function getParentClasses($class);
+    function getParentClasses($class);
 
     /**
      * Return the shortname of a class.
@@ -46,13 +43,13 @@ interface ReflectionService
      * @param string $class
      * @return string
      */
-    public function getClassShortName($class);
+    function getClassShortName($class);
 
     /**
      * @param string $class
      * @return string
      */
-    public function getClassNamespace($class);
+    function getClassNamespace($class);
 
     /**
      * Return a reflection class instance or null
@@ -60,7 +57,7 @@ interface ReflectionService
      * @param string $class
      * @return \ReflectionClass|null
      */
-    public function getClass($class);
+    function getClass($class);
 
     /**
      * Return an accessible property (setAccessible(true)) or null.
@@ -69,7 +66,7 @@ interface ReflectionService
      * @param string $property
      * @return \ReflectionProperty|null
      */
-    public function getAccessibleProperty($class, $property);
+    function getAccessibleProperty($class, $property);
 
     /**
      * Check if the class have a public method with the given name.
@@ -78,6 +75,6 @@ interface ReflectionService
      * @param mixed $method
      * @return bool
      */
-    public function hasPublicMethod($class, $method);
+    function hasPublicMethod($class, $method);
 }
 

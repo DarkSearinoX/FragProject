@@ -24,21 +24,21 @@ class FullPDB
     /**
      * @var string
      *
-     * @ORM\Column(name="FourLetterName", type="string", length=255)
+     * @ORM\Column(name="fourLetterName", type="string", length=255)
      */
     private $fourLetterName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Resolution", type="string", length=255)
+     * @ORM\Column(name="resolution", type="string", length=255)
      */
     private $resolution;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="FullName", type="text")
+     * @ORM\Column(name="fullName", type="text")
      */
     private $fullName;
 
@@ -76,7 +76,7 @@ class FullPDB
      */
     public function setFourLetterName($fourLetterName)
     {
-        $this->FourLetterName = $fourLetterName;
+        $this->fourLetterName = $fourLetterName;
     
         return $this;
     }
@@ -88,7 +88,7 @@ class FullPDB
      */
     public function getFourLetterName()
     {
-        return $this->FourLetterName;
+        return $this->fourLetterName;
     }
 
     /**
@@ -99,7 +99,7 @@ class FullPDB
      */
     public function setResolution($resolution)
     {
-        $this->Resolution = $resolution;
+        $this->resolution = $resolution;
     
         return $this;
     }
@@ -111,7 +111,7 @@ class FullPDB
      */
     public function getResolution()
     {
-        return $this->Resolution;
+        return $this->resolution;
     }
 
     /**
@@ -122,7 +122,7 @@ class FullPDB
      */
     public function setFullName($fullName)
     {
-        $this->FullName = $fullName;
+        $this->fullName = $fullName;
     
         return $this;
     }
@@ -134,7 +134,7 @@ class FullPDB
      */
     public function getFullName()
     {
-        return $this->FullName;
+        return $this->fullName;
     }
 
     /**

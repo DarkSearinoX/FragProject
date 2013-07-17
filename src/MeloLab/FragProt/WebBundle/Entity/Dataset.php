@@ -151,4 +151,27 @@ class Dataset
     {
         return $this->residues;
     }
+
+    /**
+     * Set Description
+     *
+     * @param string $description
+     * @return Dataset
+     */
+    public function setDescription($description)
+    {
+        $this->Description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get Description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->Description;
+    }
 }

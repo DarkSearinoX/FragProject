@@ -237,7 +237,7 @@ img {
 }
 
 .post .title {
-	padding: 7px 0px 40px 0px;
+	padding: 7px 0px 10px 0px;
 	letter-spacing: -1px;
 }
 
@@ -463,7 +463,7 @@ img {
 #footer {
 	height: 120px;
 	margin: 0 auto;
-	padding: 50px 0 15px 0;
+	padding: 20px 0 15px 0;
 	background: #000000;
 }
 

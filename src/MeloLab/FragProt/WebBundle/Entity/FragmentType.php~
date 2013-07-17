@@ -1,6 +1,6 @@
 <?php
 
-namespace FragProject\FragBundle\Entity;
+namespace MeloLab\FragProt\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -99,5 +99,38 @@ class FragmentType
     public function getShortName()
     {
         return $this->shortName;
+    }
+
+    /**
+     * Add fragments
+     *
+     * @param \MeloLab\FragProt\WebBundle\Entity\Fragment $fragments
+     * @return FragmentType
+     */
+    public function addFragment(\MeloLab\FragProt\WebBundle\Entity\Fragment $fragments)
+    {
+        $this->fragments[] = $fragments;
+    
+        return $this;
+    }
+
+    /**
+     * Remove fragments
+     *
+     * @param \MeloLab\FragProt\WebBundle\Entity\Fragment $fragments
+     */
+    public function removeFragment(\MeloLab\FragProt\WebBundle\Entity\Fragment $fragments)
+    {
+        $this->fragments->removeElement($fragments);
+    }
+
+    /**
+     * Get fragments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFragments()
+    {
+        return $this->fragments;
     }
 }

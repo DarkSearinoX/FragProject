@@ -36,7 +36,7 @@ interface ConnectionRegistry
      *
      * @return string The default connection name
      */
-    public function getDefaultConnectionName();
+    function getDefaultConnectionName();
 
     /**
      * Gets the named connection.
@@ -45,19 +45,19 @@ interface ConnectionRegistry
      *
      * @return object
      */
-    public function getConnection($name = null);
+    function getConnection($name = null);
 
     /**
      * Gets an array of all registered connections
      *
      * @return array An array of Connection instances
      */
-    public function getConnections();
+    function getConnections();
 
     /**
      * Gets all connection names.
      *
      * @return array An array of connection names
      */
-    public function getConnectionNames();
+    function getConnectionNames();
 }

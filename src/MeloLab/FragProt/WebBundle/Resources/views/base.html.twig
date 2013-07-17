@@ -33,15 +33,15 @@
             <!-- Header -->
             <div id="header" class="container">
                 <div id="logo">
-                    <h1><a href="{{ path('fragprot_home') }}">Frag<span class="gray">Prot</span></a></h1>
+                    <h1><a href="{{ path('fragprot_index') }}">Frag<span class="gray">Prot</span></a></h1>
                     <p>A webserver of clusters of short protein fragments</p>
                 </div>         
                 <div id="menu">
                     <ul>
                     {% block menu %}
-                        <li class="{%block menu_home%}{%endblock%}"><a href="{{ path('fragprot_home') }}"><span>Home</span></a></li>
-                        <li class="{%block menu_search%}{%endblock%}"><a href="{{ path('fragprot_search_home') }}"><span>Search</span></a></li>
-                        <li class="{%block menu_contact%}{%endblock%}"><a href="{{ path('fragprot_home') }}"><span>Contact</span></a></li>
+                        <li class="{%block menu_home%}{%endblock%}"><a href="{{ path('fragprot_index') }}"><span>Home</span></a></li>
+                        <li class="{%block menu_search%}{%endblock%}"><a href="{{ path('fragprot_search_index') }}"><span>Search</span></a></li>
+                        <li class="{%block menu_contact%}{%endblock%}"><a href="{{ path('fragprot_index') }}"><span>Contact</span></a></li>
                     {% endblock %}  
                     </ul>
                 </div> 
@@ -89,7 +89,7 @@
     <!-- Footer -->
     <div id="footer">
         <p>             
-        &copy; 2013 MeloLab | Felipe Rodriguez Valenzuela, Bioinformatics Engeniering Student,<br/>P. Universidad Catolica de Chile | Alameda 340. Santiago, Chile<br/>Email: ferodriguez@alumnos.utalca.cl &nbsp;&nbsp;
+        &copy; 2013 MeloLab | Felipe Rodriguez Valenzuela, Bioinformatics Engineer,<br/>P. Universidad Catolica de Chile | Alameda 340. Santiago, Chile<br/>Email: ferodriguez.mbl@gmail.com &nbsp;&nbsp;
         Design by <a href="http://www.freecsstemplates.org/">FCT</a>
         </p>
     </div>  

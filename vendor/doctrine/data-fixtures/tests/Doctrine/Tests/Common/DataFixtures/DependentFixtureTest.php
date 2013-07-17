@@ -147,12 +147,27 @@ class DependentFixtureTest extends BaseTest
     /**
      * @expectedException RuntimeException
      */
-    public function test_inCaseAFixtureHasAnUnexistenDependencyOrIfItWasntLoaded_throwsException()
+    public function test_inCaseAFixtureHasAnUnexistentDependencyOrIfItWasntLoaded_throwsException()
     {
         $loader = new Loader();
         $loader->addFixture(new FixtureWithUnexistentDependency);
 
         $orderedFixtures = $loader->getFixtures();
+    }
+
+    public function test_inCaseGetFixturesReturnsDifferentResultsEachTime()
+    {
+        $loader = new Loader();
+        $loader->addFixture(new DependentFixture1);
+        $loader->addFixture(new BaseParentFixture1);
+
+        // Intentionally calling getFixtures() twice
+        $loader->getFixtures();
+        $orderedFixtures = $loader->getFixtures();
+
+        $this->assertCount(2, $orderedFixtures);
+        $this->assertInstanceOf(__NAMESPACE__ . '\BaseParentFixture1', array_shift($orderedFixtures));
+        $this->assertInstanceOf(__NAMESPACE__ . '\DependentFixture1', array_shift($orderedFixtures));
     }
 }
 
