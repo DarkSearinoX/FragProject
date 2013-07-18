@@ -32,7 +32,6 @@ class FragmentFile
 
     /**
      * @ORM\Column(type="string", length=255, name="fragmentPdbName",nullable=true)
-     *
      * @var string $fragmentPdbName
      */
     protected $fragmentPdbName;
@@ -40,6 +39,7 @@ class FragmentFile
     /**
      * This var was created to manage file updates
      * @var \DateTime
+     * @Assert\NotBlank()
      * @ORM\Column(name="updatedAt", type="date", nullable=true)
      */
     private $updatedAt;

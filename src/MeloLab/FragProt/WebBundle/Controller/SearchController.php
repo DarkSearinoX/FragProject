@@ -85,11 +85,12 @@ class SearchController extends Controller
             $fragmentFile = new FragmentFile();
             
             $form = $this->createForm(new FragmentFileType(),$fragmentFile);
-            
             $form->bind($this->get('request'));
             
             $em->persist($fragmentFile);
             $em->flush();
+            
+            $this->container->get('vich_uploader.storage')->upload($fragmentFile);
             
            $fragments = array('1'=>'asdf','2'=>'qwer');
             
