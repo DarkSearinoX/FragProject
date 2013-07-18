@@ -37,67 +37,6 @@ class FragmentFile
      */
     protected $fragmentPdbName;
     
-    /**
-     * @ORM\OneToOne(targetEntity="Fragment")
-     * @ORM\JoinColumn(name="fragmentId", referencedColumnName="id")
-     */
-    private $fragment;
-
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set pdbName
-     *
-     * @param string $pdbName
-     * @return FragmentFile
-     */
-    public function setPdbName($pdbName)
-    {
-        $this->pdbName = $pdbName;
     
-        return $this;
-    }
 
-    /**
-     * Get pdbName
-     *
-     * @return string 
-     */
-    public function getPdbName()
-    {
-        return $this->pdbName;
-    }
-
-    /**
-     * Set fragment
-     *
-     * @param \MeloLab\FragProt\WebBundle\Entity\Fragment $fragment
-     * @return FragmentFile
-     */
-    public function setFragment(\MeloLab\FragProt\WebBundle\Entity\Fragment $fragment = null)
-    {
-        $this->fragment = $fragment;
-    
-        return $this;
-    }
-
-    /**
-     * Get fragment
-     *
-     * @return \MeloLab\FragProt\WebBundle\Entity\Fragment 
-     */
-    public function getFragment()
-    {
-        return $this->fragment;
-    }
 }

@@ -24,6 +24,6 @@ class FragmentFileType extends AbstractType
 
     public function getName()
     {
-        return 'melolab_fragprot_webbundle_fragmentfiletype';
+        return 'file_search';
     }
 }

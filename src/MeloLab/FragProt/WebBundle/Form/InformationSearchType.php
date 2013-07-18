@@ -17,7 +17,7 @@ class InformationSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options) {
         
         $builder
-            ->add('set','entity',array('class'=>'MeloLabFragProtWebBundle:Dataset','label' => 'Dataset','empty_value'=>'Select dataset'))    
+            ->add('dataset','entity',array('class'=>'MeloLabFragProtWebBundle:Dataset','label' => 'Dataset','empty_value'=>'Select dataset'))    
             ->add('sequence','text',array( 'label' => 'Sequence','required'=>false))
             ->add('pdb_code','text',array('label'=> 'PDB ID','required'=>false))
             ->add('init_pos','integer',array('label'=>'Initial Position','required'=>false))
@@ -35,7 +35,7 @@ class InformationSearchType extends AbstractType
     }
 
     public function getName() {
-        return 'SequenceSearch';
+        return 'info_search';
     }
 }
 

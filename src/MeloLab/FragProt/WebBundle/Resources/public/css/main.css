@@ -29,3 +29,7 @@ div input {
 #page {
     min-height:400px !important;
 }
+.ui-accordion .ui-accordion-header{
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}

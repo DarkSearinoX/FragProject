@@ -1,11 +1,23 @@
 {# Author: Felipe Rodríguez Valenzuela #}
 {% extends 'MeloLabFragProtWebBundle:Search:base.html.twig' %}
-{% form_theme form 'MeloLabFragProtWebBundle:Form:niceFields.html.twig' %}
+{% block javascripts %}
+{{parent()}}
+<script src="{{ asset('bundles/melolabfragprotweb/js/search.js') }}" type="text/javascript"></script>
+{% endblock %}
 
-{%block page_title%}Upload PDB Search{%endblock%}
+
+{%block page_title%}Search Results{%endblock%}
 
 {% block main %}
 
 
+{% if fragments|length > 0 %}
+    <div id="accordion-fragments">
+        {% for fragment in fragments %}
+            <h3>{{fragment}}</h3>
+            <div>{{fragment}}</div>
+        {% endfor %}
+    </div>            
+{% endif %}
 
 {% endblock %}

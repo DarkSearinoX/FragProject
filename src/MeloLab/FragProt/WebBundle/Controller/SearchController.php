@@ -4,6 +4,7 @@ namespace MeloLab\FragProt\WebBundle\Controller;
 
 use MeloLab\FragProt\WebBundle\Form\FragmentFileType;
 use MeloLab\FragProt\WebBundle\Form\InformationSearchType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -57,17 +58,48 @@ class SearchController extends Controller
     /**
      * @Route("/results",name="fragprot_search_results")
      * @Template()
+     * @Method("POST")
      */
     public function showFragmentsAction(Request $request)
     {
-         $form = $this->createForm(new InformationSearchType(), $data);
+        $data = array();
         
-        if ($this->get('request')->isMethod('get') && $this->get('request')->get('SequenceSearch')) {
+        if($this->get('request')->isMethod('post') && $this->get('request')->get('info_search')) {
+        
+            $form = $this->createForm(new InformationSearchType());
             $form->bind($this->get('request'));
+            
+            $data['dataset'] = $form->get('dataset')->getData();
             $data['sequence'] = $form->get('sequence')->getData();
+            
+            $fragments = array('1'=>'asdf','2'=>'qwer');
+            
+            return array(
+                'fragments'=>$fragments,
+             );
+            
+//            if($data['sequence'] = '')
+//            {
+//                echo "Nada llego";
+//            }
+            
         }
-        
-        return array('form'=>null); 
+        else if($this->get('request')->isMethod('post') && $this->get('request')->get('file_search'))
+        {
+            $form = $this->createForm(new FragmentFileType());
+            $form->bind($this->get('request'));
+            
+            $fragments = array('1'=>'asdf','2'=>'qwer');
+            
+            return array(
+                'fragments'=>$fragments,
+             );
+        }
+        else
+        {
+            return array('form'=>'null'); 
+        }
+                
     }
     
     
