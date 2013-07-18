@@ -2,11 +2,12 @@
 
 namespace MeloLab\FragProt\WebBundle\Controller;
 
+use MeloLab\FragProt\WebBundle\Form\FragmentFileType;
+use MeloLab\FragProt\WebBundle\Form\InformationSearchType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use MeloLab\FragProt\WebBundle\Form\InformationSearchType;
 
 /**
  * 
@@ -30,11 +31,8 @@ class SearchController extends Controller
      */
     public function searchInformationAction(Request $request)
     {
-        $data = array();
         
-        $data['sequence']='';
-        
-        $form = $this->createForm(new InformationSearchType(), $data);
+        $form = $this->createForm(new InformationSearchType());
         
         return array(
             'form'=>$form->createView()
@@ -47,7 +45,12 @@ class SearchController extends Controller
      */
     public function searchUploadAction(Request $request)
     {
-       return array('form'=>null); 
+        $form = $this->createForm(new FragmentFileType);
+
+        return array(
+            'form'=>$form->createView()
+        );
+       
     }
     
     

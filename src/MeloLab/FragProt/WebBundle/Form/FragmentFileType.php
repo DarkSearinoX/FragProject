@@ -11,8 +11,7 @@ class FragmentFileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pdbName')
-            ->add('fragment')
+            ->add('fragment','file',array('label'=>'Protein Fragment (.pdb format) (1MB max):'))
         ;
     }
 

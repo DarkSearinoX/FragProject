@@ -25,17 +25,17 @@ class FragmentFile
 
     /**
      * @Assert\File(maxSize="1M")
-     * @Vich\UploadableField(mapping="fragment_pdb", fileNameProperty="fragmentPdbName")
-     * @var File $fragment_pdb
+     * @Vich\UploadableField(mapping="fragmentPdb", fileNameProperty="fragmentPdbName")
+     * @var File $fragmentPdb
      */
-    protected $fragment_pdb;
+    protected $fragmentPdb;
 
     /**
-     * @ORM\Column(type="string", length=255, name="pdb_name")
+     * @ORM\Column(type="string", length=255, name="fragmentPdbName")
      *
-     * @var string $pdbName
+     * @var string $fragmentPdbName
      */
-    protected $pdbName;
+    protected $fragmentPdbName;
     
     /**
      * @ORM\OneToOne(targetEntity="Fragment")
