@@ -95,7 +95,7 @@ class Fragment
      */
     private $fragmentType;
 
-
+    
     /**
      * Get id
      *
@@ -358,4 +358,6 @@ class Fragment
     {
         return $this->fragmentType;
     }
+    
+
 }

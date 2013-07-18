@@ -2,6 +2,7 @@
 
 namespace MeloLab\FragProt\WebBundle\Controller;
 
+use MeloLab\FragProt\WebBundle\Entity\FragmentFile;
 use MeloLab\FragProt\WebBundle\Form\FragmentFileType;
 use MeloLab\FragProt\WebBundle\Form\InformationSearchType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -30,7 +31,7 @@ class SearchController extends Controller
      * @Route("/information",name="fragprot_search_information")
      * @Template()
      */
-    public function searchInformationAction(Request $request)
+    public function searchInformationAction()
     {
         
         $form = $this->createForm(new InformationSearchType());
@@ -44,7 +45,7 @@ class SearchController extends Controller
      * @Route("/upload",name="fragprot_search_upload")
      * @Template()
      */
-    public function searchUploadAction(Request $request)
+    public function searchUploadAction()
     {
         $form = $this->createForm(new FragmentFileType);
 
@@ -54,7 +55,6 @@ class SearchController extends Controller
        
     }
     
-    
     /**
      * @Route("/results",name="fragprot_search_results")
      * @Template()
@@ -63,6 +63,7 @@ class SearchController extends Controller
     public function showFragmentsAction(Request $request)
     {
         $data = array();
+        $em = $this->getDoctrine()->getManager();
         
         if($this->get('request')->isMethod('post') && $this->get('request')->get('info_search')) {
         
@@ -78,18 +79,19 @@ class SearchController extends Controller
                 'fragments'=>$fragments,
              );
             
-//            if($data['sequence'] = '')
-//            {
-//                echo "Nada llego";
-//            }
-            
         }
         else if($this->get('request')->isMethod('post') && $this->get('request')->get('file_search'))
         {
-            $form = $this->createForm(new FragmentFileType());
+            $fragmentFile = new FragmentFile();
+            
+            $form = $this->createForm(new FragmentFileType(),$fragmentFile);
+            
             $form->bind($this->get('request'));
             
-            $fragments = array('1'=>'asdf','2'=>'qwer');
+            $em->persist($fragmentFile);
+            $em->flush();
+            
+           $fragments = array('1'=>'asdf','2'=>'qwer');
             
             return array(
                 'fragments'=>$fragments,
@@ -101,8 +103,5 @@ class SearchController extends Controller
         }
                 
     }
-    
-    
-
     
 }
