@@ -1,0 +1,10 @@
+{% spaceless %}
+<a{% for attr, value in options %} {{ attr }}="{{ value }}"{% endfor %}>
+    {{ title }}
+    {%- if sorted %}
+        {%- if direction|lower == 'asc' %}<span class="arrow down">▼</span>{%- endif %}
+        {%- if direction|lower == 'desc' %}<span class="arrow up">▲</span>{% endif %}
+    {% endif %}
+</a>
+{% endspaceless %}
+
