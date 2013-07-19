@@ -24,7 +24,7 @@ class Residue
     /**
      * @var string
      *
-     * @ORM\Column(name="Chain", type="string", length=255)
+     * @ORM\Column(name="frag_chain", type="string", length=255)
      */
     private $chain;
 
