@@ -71,7 +71,7 @@ vich_uploader:
     gaufrette: false
     storage: vich_uploader.storage.file_system
     mappings:
-        fragmentPdb:
+        fragment_file:
             uri_prefix: %kernel.root_dir%/../src/MeloLab/FragProt/WebBundle/Resources/public/uploads/fragments
             upload_destination: %kernel.root_dir%/../src/MeloLab/FragProt/WebBundle/Resources/public/uploads/fragments
             delete_on_remove: true

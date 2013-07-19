@@ -38,7 +38,8 @@ class LoadFullPDBData implements FixtureInterface, ContainerAwareInterface
         $em->getConnection()->exec("ALTER TABLE $tableName AUTO_INCREMENT = 1;");
 
         //Read file contents
-        $handle = fopen("/var/www/FragProject/src/MeloLab/FragProt/WebBundle/DBData/AllPdbStructures.csv", "r") or die("Couldn't get handle");
+//        $handle = fopen("/var/www/FragProject/src/MeloLab/FragProt/WebBundle/DBData/AllPdbStructures.csv", "r") or die("Couldn't get handle");
+        $handle = false;
         if ($handle) {
             while (!feof($handle)) {
                 $bufferArray = array();

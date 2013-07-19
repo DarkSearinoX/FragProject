@@ -48,7 +48,8 @@ class SearchController extends Controller
      */
     public function searchUploadAction()
     {
-        $form = $this->createForm(new FragmentFileType);
+        $file = new FragmentFile();
+        $form = $this->createForm(new FragmentFileType(),$file);
 
         return array(
             'form'=>$form->createView()
@@ -147,15 +148,23 @@ class SearchController extends Controller
             
             $form = $this->createForm(new FragmentFileType(),$fragmentFile);
             $form->bind($this->get('request'));
-            
+        
             $this->container->get('vich_uploader.storage')->upload($fragmentFile);
+            
+            echo "aer";
+            echo "[".$fragmentFile->getFragmentPdb()."]";
+            echo "<".$fragmentFile->getFragmentPdbName().">";
+            
+            //#### FUCKING VICH UPLOADER DOESNT WORK #####
+            
             $em->persist($fragmentFile);
             $em->flush();
             
+            //Call to PDB USR 
             $usrTools = new PdbUsrTools();
             $usr = $usrTools->convertUploadedFile($fragmentFile);
             
-            
+            $usrResults = array();
             //############## TO DO ##################
             $query = false;
            
@@ -174,11 +183,11 @@ class SearchController extends Controller
         }
         else
         {
-            $fragments = $paginator->paginate(
-                $usrResults,
-                $page, /*page number*/
-                10 /*limit per page*/
-            );
+//            $fragments = $paginator->paginate(
+//                $usrResults,
+//                $page, /*page number*/
+//                10 /*limit per page*/
+//            );
         }
         
         $fragments = array('1'=>'asdf','2'=>'qwer');
