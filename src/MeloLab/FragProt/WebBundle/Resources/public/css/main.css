@@ -5,11 +5,14 @@
     Description:
         Main Fragprot stylesheet.
 */
+#header.container{
+    background: url("../images/header3.png");
+}
 
 .image-scale-hack {
     image-rendering:optimizeQuality; 
     -ms-interpolation-mode:bicubic;
-    transform: rotate( .0001deg );
+    transform: rotate( .0001deg ); /* hack to render images in firefox*/
 } 
 
 div label {
@@ -32,4 +35,22 @@ div input {
 .ui-accordion .ui-accordion-header{
     padding-top: 2px !important;
     padding-bottom: 2px !important;
+}
+
+#fragment-head{
+    font-size: 11px;
+    font-weight: normal;
+}
+#fragment-body{
+    font-size: 11px !important;
+    font-weight: normal;
+}
+#fragment-body h3{
+    font-size: 12px !important;
+    font-weight: bold;
+}
+#fragment-seq{
+    font-family: monospace;
+    display: inline-block;
+    width: 100px;
 }

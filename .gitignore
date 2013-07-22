@@ -6,3 +6,4 @@
 .*
 !/.gitignore
 src/MeloLab/FragProt/WebBundle/DBData/*
+src/MeloLab/FragProt/WebBundle/Resources/public/jmol/*

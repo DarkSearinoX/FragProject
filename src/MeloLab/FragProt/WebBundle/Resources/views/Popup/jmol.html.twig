@@ -1,0 +1,22 @@
+{# Author: Felipe Rodríguez Valenzuela #}
+<html>
+    <head>
+        <script src="{{ asset('bundles/melolabfragprotweb/jmol/jsmol/JSmol.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/melolabfragprotweb/js/jmol.js') }}" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>{{fragment.sequence}}</h1>
+        <script>
+
+            // note that the variable name MUST match the first parameter in quotes
+            jmolApplet0 = Jmol.getApplet("jmolApplet0", Info)
+
+            // note that now scripts can be sent immediately after the _Applet object is created
+
+            //Jmol.script(jmolApplet0,"background gray;delay 0.5;background black")
+            var lastPrompt=0;
+        </script>
+        <a href="javascript:Jmol.script(jmolApplet0,'set antialiasDisplay false')">faster</a>
+        
+    </body>
+</html>

@@ -73,7 +73,7 @@ class Fragment
     /**
      * @var float
      *
-     * @ORM\Column(name="RMSD", type="float")
+     * @ORM\Column(name="RMSD", type="float",nullable=true)
      */
     private $rmsd;
 

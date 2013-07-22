@@ -6,7 +6,7 @@
 
 {% block main %}
 
-<form action="{{ path('fragprot_search_results') }}" method="post">
+<form action="{{ path('fragprot_search_results') }}" method="get">
         {{form_widget(form)}}
         <button type="submit">Search</button>
 </form>

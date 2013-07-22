@@ -87,7 +87,7 @@ class PdbUsrTools {
         //Get Path for file
         $pdbFile = $fragment->getFragmentPdbName();
         
-        //#### TO DO #########3
+        //#### TO DO #########
         
         //Open file 
         $this->read_pdb_file($pdbFile);

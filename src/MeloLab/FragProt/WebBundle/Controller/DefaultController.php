@@ -18,7 +18,16 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        
+        return array();
+    }
+    
+    /**
+     * @Route("/contact",name="fragprot_contact")
+     * @Template()
+     * @return null
+     */
+    public function contactAction()
+    {
         return array();
     }
 }

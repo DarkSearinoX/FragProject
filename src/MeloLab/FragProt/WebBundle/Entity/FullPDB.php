@@ -31,7 +31,7 @@ class FullPDB
     /**
      * @var string
      *
-     * @ORM\Column(name="resolution", type="string", length=255)
+     * @ORM\Column(name="resolution", type="string", length=255,nullable=true)
      */
     private $resolution;
 
