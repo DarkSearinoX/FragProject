@@ -1,22 +1,24 @@
 {# Author: Felipe Rodríguez Valenzuela #}
 <html>
     <head>
-        <script src="{{ asset('bundles/melolabfragprotweb/jmol/jsmol/JSmol.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('bundles/melolabfragprotweb/js/jmol.js') }}" type="text/javascript"></script>
+        <meta charset="utf-8">
+        <script src="{{ asset('bundles/melolabfragprotweb/jmol/jmol.js') }}" type="text/javascript"></script>
     </head>
     <body>
-        <h1>{{fragment.sequence}}</h1>
         <script>
-
-            // note that the variable name MUST match the first parameter in quotes
-            jmolApplet0 = Jmol.getApplet("jmolApplet0", Info)
-
-            // note that now scripts can be sent immediately after the _Applet object is created
-
-            //Jmol.script(jmolApplet0,"background gray;delay 0.5;background black")
-            var lastPrompt=0;
+            jmolInitialize("{{ asset('bundles/melolabfragprotweb/jmol/JmolApplet0.jar') }}");
+            jmolSetCallback("UseCommandThread","true");
+            jmolSetParameter("UseCommandThread","true");
+            
         </script>
-        <a href="javascript:Jmol.script(jmolApplet0,'set antialiasDisplay false')">faster</a>
-        
+        <object name="jmol" id="jmol" code="JmolApplet" archive="{{ asset('bundles/melolabfragprotweb/jmol/JmolApplet0.jar') }}" width="400" height="333" type="application/x-java-applet">
+            <param name="progressbar" value="true">
+            <param name="bgcolor"     value="#000000">
+            <param name="style"       value="wireframe">
+            <param name="script"      value="load {{ asset('bundles/melolabfragprotweb/jmol/data/1crn.pdb') }}; set perspectiveModel 10; select all; frame all; wireframe false; CPK false; trace true;">
+            <param name="wireframeRotation" value="false">
+            <param name="perspectiveDepth"  value="false">
+        </object>
+
     </body>
 </html>
