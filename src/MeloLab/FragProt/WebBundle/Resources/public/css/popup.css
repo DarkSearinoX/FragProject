@@ -1,0 +1,56 @@
+/* 
+    Document   : main
+    Created on : Mar 4, 2013, 9:03:22 PM
+    Author     : Felipe Rodriguez
+    Description:
+        Main Fragprot stylesheet.
+*/
+#header.container{
+    background: url("../images/header3.png");
+}
+
+.image-scale-hack {
+    image-rendering:optimizeQuality; 
+    -ms-interpolation-mode:bicubic;
+    transform: rotate( .0001deg ); /* hack to render images in firefox*/
+} 
+
+div label {
+    margin-top: 7px;
+    display: block; 
+}
+div input {  
+    display: block;
+}  
+#logo h1 {
+    line-height: 70px !important;
+}
+#header {
+	
+    height: 100px !important;
+}
+#page {
+    min-height:400px !important;
+}
+.ui-accordion .ui-accordion-header{
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+#fragment-head{
+    font-size: 11px;
+    font-weight: normal;
+}
+#fragment-body{
+    font-size: 11px !important;
+    font-weight: normal;
+}
+#fragment-body h3{
+    font-size: 12px !important;
+    font-weight: bold;
+}
+#fragment-seq{
+    font-family: monospace;
+    display: inline-block;
+    width: 100px;
+}
